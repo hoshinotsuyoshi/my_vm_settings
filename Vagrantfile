@@ -68,6 +68,7 @@ Vagrant.configure("2") do |config|
   # config.berkshelf.except = []
 
   config.vm.boot_timeout = 30 * 60
+
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       :mysql => {
@@ -88,7 +89,7 @@ Vagrant.configure("2") do |config|
           "2.0.0-p353" => true,
           "2.1.0" => true,
         },
-        :default => "1.9.3-p484"
+        :default => "embedded"
       }
     }
 
