@@ -73,6 +73,9 @@ Vagrant.configure("2") do |config|
         :server_root_password => 'rootpass',
         :server_debian_password => 'debpass',
         :server_repl_password => 'replpass'
+      },
+      :mongodb => {
+        :package_version => "2.4.8-mongodb_1"
       }
     }
 
@@ -80,6 +83,8 @@ Vagrant.configure("2") do |config|
         "recipe[sandbox::default]",
         "recipe[yum-epel]",
         "recipe[nginx]",
+        "recipe[mongodb::10gen_repo]",
+        "recipe[mongodb]",
     ]
   end
 end
