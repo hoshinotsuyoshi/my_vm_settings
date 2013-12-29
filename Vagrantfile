@@ -67,6 +67,7 @@ Vagrant.configure("2") do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
 
+  config.vm.boot_timeout = 30 * 60
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       :mysql => {
@@ -76,15 +77,28 @@ Vagrant.configure("2") do |config|
       },
       :mongodb => {
         :package_version => "2.4.8-mongodb_1"
+      },
+      :ruby_build => {
+        :default_ruby_base_path => "/opt/rubies" # chruby reads
+      },
+      :chruby => {
+        :rubies => {
+          #"1.8.7-p374" => true, #openssl error occurs
+          "1.9.3-p484" => true,
+          "2.0.0-p353" => true,
+          "2.1.0" => true,
+        },
+        :default => "1.9.3-p484"
       }
     }
 
     chef.run_list = [
-        "recipe[sandbox::default]",
         "recipe[yum-epel]",
         "recipe[nginx]",
         "recipe[mongodb::10gen_repo]",
         "recipe[mongodb]",
+        "recipe[sandbox::default]",
+        "recipe[chruby]",
     ]
   end
 end
