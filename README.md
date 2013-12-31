@@ -61,6 +61,26 @@ VirtualBoxとVagrantをインストールする必要があります。
   boxが元々ある状態で、約２０分かかります。
   boxが元々ない状態だと結構（プラス１時間くらい?）かかります
 
+## vm側でのrubyの切り替え方
+  まずログイン
+  ```
+  % vagrant ssh
+  ```
+  chrubyでインストール済みのrubyを確認できます
+  ```
+  [vagrant@vm ~]$ chruby
+     1.9.3-p484
+     2.0.0-p353
+     2.1.0
+   * embedded
+  ```
+  chruby [version]で利用するrubyをchangeできます
+  ```
+  [vagrant@vm ~]$ chruby 2.1
+  [vagrant@vm ~]$ ruby -v
+  ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-linux]
+  ```
+  
 ## Recipes
 いつか書く
 ## Author
