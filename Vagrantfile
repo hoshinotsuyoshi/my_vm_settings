@@ -94,10 +94,6 @@ Vagrant.configure("2") do |config|
     }
 
     chef.run_list = [
-        "recipe[yum-epel]",
-        "recipe[nginx]",
-        "recipe[mongodb::10gen_repo]",
-        "recipe[mongodb]",
         "recipe[sandbox::rubies_build]",
         "recipe[chruby]",
     ]
