@@ -98,7 +98,7 @@ Vagrant.configure("2") do |config|
         "recipe[nginx]",
         "recipe[mongodb::10gen_repo]",
         "recipe[mongodb]",
-        "recipe[sandbox::default]",
+        "recipe[sandbox::rubies_build]",
         "recipe[chruby]",
     ]
   end

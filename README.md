@@ -1,13 +1,27 @@
 # sandbox cookbook
 
-# Requirements
+my sandbox setting with newest ruby 2.1.0
 
-# Usage
+1. [Virtual Box 4.3.6](https://www.virtualbox.org/wiki/Downloads "Virtual Box 4.3.6")
+2. [Vagrant 1.4.1](http://www.vagrantup.com/downloads.html "Vagrant 1.4.1")
 
-# Attributes
+## Requirements
+    % vagrant -v
+    Vagrant 1.4.1
+    % chef-solo --version
+    Chef: 11.8.2
+    % VirtualBox --help
+    Oracle VM VirtualBox Manager 4.3.6
+    (C) 2005-2013 Oracle Corporation
+    All rights reserved.
 
-# Recipes
+## Usage
+    % git clone #{this repository}
 
-# Author
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+## Recipes
+
+## Author
+
+Author:: hoshinotsuyoshi
+
