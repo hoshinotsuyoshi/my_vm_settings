@@ -33,9 +33,8 @@ VirtualBoxとVagrantをインストールする必要があります。
 ## Usage
 
 1. このcookbookをクローンします
-ruby(1.9.3,2.0.0,2.1.0)だけインストールする場合
   ```
-  % git clone -b rubies https://github.com/hoshinotsuyoshi/sandbox.git
+  % git clone https://github.com/hoshinotsuyoshi/sandbox.git
   ```
 
 2. Gemのインストール 
