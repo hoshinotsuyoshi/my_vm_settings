@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder ".", "/vagrant", nfs: true
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -69,6 +69,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.boot_timeout = 30 * 60
 
+  config.vm.provision :shell, :inline => "gem install chef --version 11.4.2 --no-rdoc --no-ri --conservative"
+  config.vm.provision :shell, :inline => "gem install bundler --version 1.5.3 --no-rdoc --no-ri --conservative"
+  config.vm.provision :shell, :inline => "gem install spring --version 1.1.2 --no-rdoc --no-ri --conservative"
+
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       :mysql => {
@@ -90,12 +94,14 @@ Vagrant.configure("2") do |config|
           "2.1.0" => true,
         },
         :default => "embedded"
-      }
+      },
     }
 
     chef.run_list = [
         "recipe[sandbox::rubies_build]",
         "recipe[chruby]",
+        "recipe[docker]",
+        "recipe[docker::upstart]",
     ]
   end
 end
